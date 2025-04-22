@@ -210,6 +210,29 @@ The data types in hansl/gretl are:
 </details>
 
 
-\begin{exercise}{Teiler}
-Schreiben Sie ein Programm, das zwei positive Ganzzahlen als Argumente aufnimmt, miteinander vergleicht und \texttt{True} ausgibt, falls eine Zahl ein Teiler der anderen Zahl ist.
-\end{exercise}
+## Exercise 8: Divisibility Check
+
+Write a program that takes two positive integers as arguments, compares them, and outputs `TRUE` if one number is a divisor of the other number, and `FALSE` otherwise. If either number is zero, print an error message. **Hint**: Use the modulus operator `%` to check for divisibility.
+
+<details>
+<summary>Solution</summary>
+<pre><code class="language-hansl"># divisibility_check.inp
+function void check_divisibility(int a, int b)
+    if a == 0 || b == 0
+        printf "Error: Zero cannot be used in divisibility check\n"
+        return
+    endif
+    if a % b == 0 || b % a == 0
+        printf "TRUE\n"
+    else
+        printf "FALSE\n"
+    endif
+end function
+</code></pre>
+<pre><code class="language-hansl"># Examples
+check_divisibility(10, 5)    # True: 5 divides 10
+check_divisibility(7, 14)    # True: 7 divides 14
+check_divisibility(7, 9)     # False: neither divides the other
+check_divisibility(0,1)   # Error: Zero cannot be used
+</code></pre>
+</details>
