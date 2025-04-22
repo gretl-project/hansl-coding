@@ -1,0 +1,8 @@
+clear
+set verbose off
+
+scalar n = 3  # Example value
+
+loop for i=1..n
+    printf "Hello, world.\n"
+endloop

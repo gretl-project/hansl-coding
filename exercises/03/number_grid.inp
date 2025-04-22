@@ -1,0 +1,12 @@
+clear
+set verbose off
+
+scalar count = 0
+
+loop for (i=1000; i<2000; i++)
+    printf "%d ", i
+    count += 1
+    if count % 5 == 0
+        printf "\n"
+    endif
+endloop

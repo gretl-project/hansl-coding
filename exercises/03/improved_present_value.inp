@@ -1,0 +1,14 @@
+clear
+set verbose off
+
+scalar D = 100000   # Future value
+scalar T = 10       # Years
+scalar r = 0.025    # Interest rate
+</code></pre>
+<pre><code class="language-hansl">if D <= 0 || T <= 0 || r <= 0 || r >= 0.1
+    printf "Error: Invalid input values\n"
+    printf "D and T must be > 0, r must be 0 < r < 0.1\n"
+else
+    scalar PV = D / (1 + r)^T
+    printf "Present Value: %.2f\n", PV
+endif

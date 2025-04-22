@@ -1,0 +1,8 @@
+clear
+set verbose off
+
+scalar a = 0.5  # Example value
+scalar b = 1.2  # Example value
+
+scalar result = (a >= 0 && a <= 1) && (b >= 0 && b <= 1)
+printf "Result: %d\n", result
