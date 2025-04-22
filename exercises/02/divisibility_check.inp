@@ -1,0 +1,20 @@
+set verbose off
+
+function void check_divisibility(int a, int b)
+    if a == 0 || b == 0
+        printf "Error: Zero cannot be used in divisibility check\n"
+        return
+    endif
+
+    if a % b == 0 || b % a == 0
+        printf "TRUE\n"
+    else
+        printf "FALSE\n"
+    endif
+end function
+
+# Examples
+check_divisibility(10, 5)    # True: 5 divides 10
+check_divisibility(7, 14)    # True: 7 divides 14
+check_divisibility(7, 9)     # False: neither divides the other
+check_divisibility(0,1)
