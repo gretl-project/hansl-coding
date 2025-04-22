@@ -28,13 +28,12 @@ You may execute either way:
 3) via the terminal executing the script directly (assuming you are in the folder where the script is located): `gretlcli hello_world.inp`.
 
 <details>
-    <summary>Solution</summary>
-    <pre><code class="language-hansl">
-    # hello_world.inp
-    printf "Hello, world!\n"
-    printf "Hello, world!\n"
-    printf "Hello, world!\n"
-    </code></pre>
+<summary>Solution</summary>
+<pre><code class="language-hansl"># hello_world.inp
+printf "Hello, world!\n"
+printf "Hello, world!\n"
+printf "Hello, world!\n"
+</code></pre>
 </details>
 
 
@@ -47,13 +46,12 @@ Create a new script `common_errors.inp` that demonstrates what happens when you 
 3) Misspelling a built-in command (e.g., `prnit` instead of `print`)
 
 <details>
-    <summary>Solution</summary>
-    <pre><code class="language-hansl">
-    # common_errors_1.inp
-    extra   # correct: "include extra"
-    eval foo()
-    prnit "Hello, world!"
-    </code></pre>
+<summary>Solution</summary>
+<pre><code class="language-hansl"># common_errors_1.inp
+extra   # correct: "include extra"
+eval foo()
+prnit "Hello, world!"
+</code></pre>
 </details>
 
 ## Exercise 4: Common Errors II
@@ -65,13 +63,12 @@ Modify the Hello World program to demonstrate these errors:
 3) Using incorrect command syntax (e.g., `print Hello` without parentheses)
 
 <details>
-    <summary>Solution</summary>
-    <pre><code class="language-hansl">
-    # common_errors_2.inp
-    string name = Hello, world!"
-    string name = "Hello, world!
-    print Hello # correct: print "Hello, world!"
-    </code></pre>
+<summary>Solution</summary>
+<pre><code class="language-hansl"># common_errors_2.inp
+string name = Hello, world!"
+string name = "Hello, world!
+print Hello # correct: print "Hello, world!"
+</code></pre>
 </details>
 
 
@@ -99,9 +96,8 @@ printf "Hello, %s!\n", name1
 Modify the script to include and welcome two names, e.g., "Alice" and "Bob". Use the `printf` function to format the output.
 
 <details>
-    <summary>Solution</summary>
-    <pre><code class="language-hansl">
-# print_names.inp
+<summary>Solution</summary>
+<pre><code class="language-hansl"># print_names.inp
 string name1 = "Alice"
 string name2 = "Bob"
 printf "Hello, %s and %s!\n", name1, name2
@@ -113,15 +109,14 @@ printf "Hello, %s and %s!\n", name1, name2
 Modify the `print_names.inp` script to include the ages of the names. Use the `printf` function to format the output:
 
 <details>
-    <summary>Solution</summary>
-    <pre><code class="language-hansl">
-    # print_names.inp
-    string name1 = "Alice"
-    string name2 = "Bob"
-    scalar age1 = 25
-    scalar age2 = 30
-    printf "Hello, %s and %s! They are %d and %d years old.\n", name1, name2, age1, age2
-    </code></pre>
+<summary>Solution</summary>
+<pre><code class="language-hansl"># print_names.inp
+string name1 = "Alice"
+string name2 = "Bob"
+scalar age1 = 25
+scalar age2 = 30
+printf "Hello, %s and %s! They are %d and %d years old.\n", name1, name2, age1, age2
+</code></pre>
 </details>
 
 ## Exercise 7: Formatted Printing III
@@ -131,14 +126,12 @@ Modify the `print_names.inp` script to hold:
 
 Print the names and ages for each person in reverse order line by line. Use the `printf` function to format the output.
 <details>
-    <summary>Solution</summary>
-    <pre><code class="language-hansl">
-    # print_names.inp
-    string names = deflist("Alice", "Bob", "Charlie")
-    matrix ages = {25, 30, 35}
-
-    printf "Hello, %s! You are %d years old.\n", names[3], ages[3]
-    printf "Hello, %s! You are %d years old.\n", names[2], ages[2]
-    printf "Hello, %s! You are %d years old.\n", names[1], ages[1]
-    </code></pre>
+<summary>Solution</summary>
+<pre><code class="language-hansl"># print_names.inp
+string names = deflist("Alice", "Bob", "Charlie")
+matrix ages = {25, 30, 35}
+printf "Hello, %s! You are %d years old.\n", names[3], ages[3]
+printf "Hello, %s! You are %d years old.\n", names[2], ages[2]
+printf "Hello, %s! You are %d years old.\n", names[1], ages[1]
+</code></pre>
 </details>
