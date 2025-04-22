@@ -1,0 +1,17 @@
+set verbose off
+
+a = "hello, world"
+b = 3
+c = 3.14
+d = {1, 2, 3}
+e = defbundle("1", "one", "2", "two", "three", 3)
+f = TRUE
+g = NA
+
+printf "a: %s\n", typename(a)
+printf "b: %s\n", typename(b)
+printf "c: %s\n", typename(c)
+printf "d: %s\n", typename(d)
+printf "e: %s\n", typename(e)
+printf "f: %s\n", typename(f)
+printf "g: %s\n", typename(g)

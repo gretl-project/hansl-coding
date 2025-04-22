@@ -1,0 +1,24 @@
+# Compound interest calculation
+scalar initial = 100000
+scalar rate = 0.035
+scalar years = 5
+
+# Method 1: Single formula
+scalar final1 = initial * (1 + rate)^years
+
+# Method 2: Step-by-step
+scalar final2 = initial
+loop i=1..years
+    final2 = final2 * (1 + rate)
+endloop
+
+printf "Method 1: %.12f\nMethod 2: %.12f\n", final1, final2
+
+scalar delta = final1 - final2
+printf "Difference: %.16f\n", delta
+
+scalar relative_delta = delta / final1
+printf "Relative difference: %.16f\n", relative_delta * 100
+
+# The results differ due to floating-point rounding at each step in Method 2
+# while Method 1 does the calculation in one operation with different rounding.

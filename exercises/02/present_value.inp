@@ -1,0 +1,7 @@
+set verbose off
+
+scalar D = 100000
+scalar T = 10
+scalar r = 0.025
+scalar PV = D / (1 + r)^T
+printf "Present value: %.2f\n", PV
