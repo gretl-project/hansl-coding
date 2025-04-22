@@ -94,12 +94,10 @@ Modify the script to include and welcome two names, e.g., "Alice" and "Bob". Use
 
 <details>
     <summary>Solution</summary>
-    ```hansl
-    # print_names.inp
-    string name1 = "Alice"
-    string name2 = "Bob"
-    printf "Hello, %s and %s!\n", name1, name2
-    ```
+    <pre><code class="language-hansl"># print_names.inp
+string name1 = "Alice"
+string name2 = "Bob"
+printf "Hello, %s and %s!\n", name1, name2</code></pre>
 </details>
 
 ## Exercise 6: Formatted Printing II
