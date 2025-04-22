@@ -43,29 +43,28 @@ Why are the results not identical?
 
 <details>
 <summary>Solution</summary>
-```hansl
-# Method 1: Using compound interest formula
+<pre><code class="language-hansl"># Method 1: Using compound interest formula
 scalar initial = 100000
 scalar rate = 0.035
 scalar years = 5
 scalar final_compound = initial * (1 + rate)^years
 printf "Compound formula result: %.2f\n", final_compound
-
-# Method 2: Step-by-step calculation
+</code></pre>
+<pre><code class="language-hansl"># Method 2: Step-by-step calculation
 scalar capital = initial
 loop i=1..5
     scalar capital = capital * (1 + rate)
 endloop
 printf "Step-by-step result: %.2f\n", capital
-
-# Explanation for the difference
+</code></pre>
+<pre><code class="language-hansl"># Explanation for the difference
 printf "Difference: %.10f\n", final_compound - capital
+</code></pre>
 
-# The results differ slightly due to floating-point arithmetic precision limitations.
-# With the compound formula, we perform one exponentiation and one multiplication.
-# In the step-by-step approach, we perform 5 multiplications sequentially.
-# Each operation introduces a tiny rounding error, and these errors accumulate differently.
-```
+The results differ slightly due to floating-point arithmetic precision limitations.
+With the compound formula, we perform one exponentiation and one multiplication.
+In the step-by-step approach, we perform 5 multiplications sequentially.
+Each operation introduces a tiny rounding error, and these errors accumulate differently.
 </details>
 
 ## Exercise 3: Logical Simplification
