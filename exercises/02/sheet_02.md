@@ -161,7 +161,6 @@ scalar approx = log(y) - log(x)
 </details>
 
 ## Exercise 7: Data Types
-## Exercise 7: Data Types
 
 Determine the data type of each of the following literals. Write a hansl program that stores these values in variables and prints their types using the `typeof()` function.
 
