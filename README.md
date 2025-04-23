@@ -9,7 +9,7 @@ This course introduces programming using Gretl's scripting language named *hansl
 2) [Data Types, References, Literals and Operators](exercises/02/sheet_02.md)
 3) [Variables, Control Flow, Loop and Data Structures](exercises/03/sheet_03.md)
 4) [Types, Bundles, and Functions](exercises/04/sheet_04.md)
-
+5) [Packages and Functions](exercises/05/sheet_05.md)
 
 ## Resources
 - [gretl-Cheatsheet on Data-Handling](https://github.com/gretl-project/gretl_cheatsheet/blob/master/datahandling.pdf)
