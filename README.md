@@ -16,4 +16,5 @@ This course introduces programming using Gretl's scripting language named *hansl
 - [Material on Gretl](https://github.com/gretl-project/material-on-gretl)
 - [Gretl Example Page](https://github.com/gretl-project/material-on-gretl/wiki)
 - [Gretl Wiki Page](https://gretlwiki.econ.univpm.it/index.php/Main_Page)
+- [Gretl example scripts](https://github.com/atecon/gretl_examples)
 
