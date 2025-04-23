@@ -1,0 +1,11 @@
+clear
+set verbose off
+
+pkg install calendar_utils
+include calendar_utils.gfn
+
+# Print documentation
+help calendar_utils
+
+# List package information
+pkg query calendar_utils

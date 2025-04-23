@@ -1,0 +1,18 @@
+clear
+set verbose off
+
+# Power function with documentation
+function scalar power(scalar x, scalar n)
+/*
+ Calculates x raised to power n
+
+ Parameters:
+   x: base value
+   n: exponent
+ Returns:
+   x^n
+ */
+    return x^n
+end function
+
+print power(2,3)

@@ -1,0 +1,40 @@
+clear
+set verbose off
+
+function bundle init_product (string name,
+                              scalar price,
+                              int stock[0::])
+    bundle B = _(name, price, stock)
+    return B
+end function
+
+# Initialize the product bundle
+bundle prod1 = init_product("Laptop", 1200, 5)
+bundle prod2 = init_product("Smartphone", 800, 10)
+print prod1 prod2
+
+
+function scalar value_stock (bundle self)
+    scalar value = self.price * self.stock
+    return value
+end function
+
+printf "Value of product 1: %d\n", value_stock(prod1)
+printf "Value of product 2: %d\n", value_stock(prod2)
+
+
+function bundle reduce_stock(bundle self, int amount[0::])
+    if amount > self.stock
+        print "Not enough stock. No change made."
+    else
+        self.stock -= amount
+        printf "Reduced stock by %d. New stock: %d\n", amount, self.stock
+    endif
+    return self
+end function
+prod1 = reduce_stock(prod1, 2)
+prod2 = reduce_stock(prod2, 12)
+printf "Product 1 after reduction:\n"
+print prod1
+printf "Product 2 after reduction:\n"
+print prod2
