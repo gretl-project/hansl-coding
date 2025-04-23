@@ -1,5 +1,4 @@
-
-# Variables, Types, and Functions
+# Variables, Types, Bundles, and Functions
 
 ## Exercise 1: Philosophers I
 Modify the code below to set Plato's birth year to 428 BC (428 BC is represented as -427 in the Gregorian calendar).
