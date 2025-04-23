@@ -1,0 +1,9 @@
+clear
+set verbose off
+
+matrix a = zeros(10, 1)  # Initialize with 10 zeros
+loop v=1..rows(a)
+    a[v] = v * v
+endloop
+
+print a

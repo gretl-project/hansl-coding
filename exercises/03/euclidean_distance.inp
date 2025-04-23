@@ -1,0 +1,14 @@
+clear
+set verbose off
+
+matrix a = mnormal(10, 1)
+matrix b = mnormal(10, 1)
+
+matrix delta = a - b
+matrix squared_diff = delta.^2     # Element-wise multiplication
+scalar sum_sq = sumc(squared_diff) # sum over column dimension
+scalar dist = sqrt(sum_sq)
+
+printf "Vector a ~ b:\n %.3f   %.3f\n", a, b
+printf "Vector delta:\n %.3f\n", delta
+printf "Euclidean distance: %.4f\n", dist

@@ -1,0 +1,16 @@
+clear
+set verbose off
+
+matrix a = mnormal(1000, 1)  # 1000 standard normal variates
+a = floor(a * 100)           # Convert to integers
+
+# Alternatively: discrete integers between -100 and 100
+#matrix a = mrandgen(i, -100, 100, 1000, 1)
+
+
+# This will work:
+scalar element = a[1000]
+printf "Element 1000: %g\n", element
+
+# This would fail (index out of bounds):
+# scalar invalid = a[1001]
