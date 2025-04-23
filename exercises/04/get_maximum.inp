@@ -1,0 +1,17 @@
+clear
+set verbose off
+
+# 1. Maximum of three numbers
+function scalar max3(int a, int b, int c)
+    if a > b
+        scalar m = a
+    else
+        scalar m = b
+    endif
+    if m < c
+        scalar m = c
+    endif
+   return m
+end function
+
+print max3(2,3,1)

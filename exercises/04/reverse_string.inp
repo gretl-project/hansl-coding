@@ -1,0 +1,14 @@
+clear
+set verbose off
+
+function string reverse_str(string s)
+    string rev = empty
+    loop i=nelem(s)..1 --decr
+        rev ~= s[i]
+    endloop
+    return rev
+end function
+
+string s = "AB C"
+s_reversed = reverse_str(s)
+print s_reversed

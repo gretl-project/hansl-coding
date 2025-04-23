@@ -1,0 +1,14 @@
+clear
+set verbose off
+
+# 1. Maximum of three numbers
+function scalar sum_vector(matrix x)
+    x = vec(x)
+    scalar result = 0
+    loop i=1..nelem(x)
+        result += x[i]
+    endloop
+    return result
+end function
+
+print sum_vector({1, 2, 3})

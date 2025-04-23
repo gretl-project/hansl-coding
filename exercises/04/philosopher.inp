@@ -1,0 +1,49 @@
+clear
+set verbose off
+
+bundle plato = _(\
+  name = "Plato",
+  born = -427,
+  teacher = "Socrates",
+  students = defarray("Aristotle", "Speusippus") \
+)
+print plato
+
+plato["born"] = -428  # Set birth year to 428 BC
+print plato
+plato.born  = -300
+print plato
+
+
+############ Exercise 2
+
+# 1. Add new element
+string plato["work"] = "The Republic"
+
+# 2. Print value using index notation
+printf "Work: %s\n", plato["work"]
+
+# 3. Print name using get()
+printf "Name: %s\n", plato.name
+
+# 4. Try to print age (errors, as not existent)
+printf "Age: %d\n", plato.age
+
+# 5. Number of keys
+printf "Number of keys: %d\n", nelem(plato)
+
+# 6. All keys
+strings keys = getkeys(plato)
+printf "Keys: %s", flatten(keys)
+
+# 7. All values
+print "Values: "
+loop foreach i plato
+    print plato["$i"]
+endloop
+
+# 8. Key-value pairs
+loop foreach i plato
+    printf "%s = ", "$i"
+    print plato["$i"]
+endloop

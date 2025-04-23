@@ -1,0 +1,16 @@
+clear
+set verbose off
+set assert stop
+
+function matrix evens_only(matrix x)
+    matrix evens = {}
+    loop i=1..nelem(x)
+        if x[i] % 2 == 0
+            evens |= x[i]
+        endif
+    endloop
+    return evens
+end function
+
+matrix m = {1,2,3,4}
+printf "Evens in {1,2,3,4}:\n%d", evens_only(m)

@@ -1,0 +1,22 @@
+clear
+set verbose off
+set assert stop
+
+function scalar factorial(int n)
+    if n < 0
+        funcerr "Factorial requires non-negative input"
+    endif
+    scalar result = 1
+    loop for (i=2; i<=n; i++)
+        result *= i
+    endloop
+    return result
+end function
+
+scalar n = 5
+scalar expected = 120
+scalar fact = factorial(n)
+printf "%d! = %g\n", n, fact
+
+# Check result
+assert(fact == expected)
