@@ -1,7 +1,7 @@
 # Introduction to Gretl and Hansl Scripting
 
 ## Course Overview
-This course introduces econometric analysis using Gretl's hansl scripting language.
+This course introduces programming using Gretl's scripting language named *hansl*.
 
 ## Topics
 
