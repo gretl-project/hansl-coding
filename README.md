@@ -5,20 +5,15 @@ This course introduces econometric analysis using Gretl's hansl scripting langua
 
 ## Topics
 
-### 1. Basics and Printing
-- [Data Import and Manipulation](exercises/01/sheet_01.md)
+1) [Data Import and Manipulation](exercises/01/sheet_01.md)
+2) [Data Types, References, Literals and Operators](exercises/02/sheet_02.md)
+3) [Variables, Control Flow, and Data Structures](exercises/03/sheet_03.md)
 
-### 2. Data Types, References, Literals and Operators
-- [Exercise](exercises/02/sheet_02.md)
 
-<!-- ### 2. Regression Analysis
-- [OLS Regression](exercises/02_regression/README.md)
-- [Model Diagnostics](exercises/02_regression/exercise2.md)
-
-## Packages
-- [Date/Time Utilities](packages/calendar_utils.md)
-- [Machine Learning](packages/random_forest.md)
 
 ## Resources
-- [Hansl Cheatsheet](docs/cheatsheet.md)
-- [Installation Guide](docs/install.md) -->
+- [gretl-Cheatsheet on Data-Handling](https://github.com/gretl-project/gretl_cheatsheet/blob/master/datahandling.pdf)
+- [Material on Gretl](https://github.com/gretl-project/material-on-gretl)
+- [Gretl Example Page](https://github.com/gretl-project/material-on-gretl/wiki)
+- [Gretl Wiki Page](https://gretlwiki.econ.univpm.it/index.php/Main_Page)
+
