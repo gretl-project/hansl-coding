@@ -10,6 +10,11 @@ This course introduces programming using Gretl's scripting language named *hansl
 3) [Variables, Control Flow, Loop and Data Structures](exercises/03/sheet_03.md)
 4) [Types, Bundles, and Functions](exercises/04/sheet_04.md)
 5) [Packages and Functions](exercises/05/sheet_05.md)
+6) [Basics On Loading and Handling](TBA)
+7) [Data Handling and Data Joining](TBA)
+8) [Data Imputation and Visualization](TBA)
+9) [Ddescriptive Statistics and Data Aggregation](TBA)
+10) [Linear Regression Analysis](TBA)
 
 ## Resources
 - [gretl-Cheatsheet on Data-Handling](https://github.com/gretl-project/gretl_cheatsheet/blob/master/datahandling.pdf)
