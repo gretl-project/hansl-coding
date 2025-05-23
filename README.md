@@ -13,7 +13,7 @@ This course introduces programming using Gretl's scripting language named *hansl
 6) [Basics On Loading and Handling](TBA)
 7) [Data Handling and Data Joining](TBA)
 8) [Data Imputation and Visualization](TBA)
-9) [Ddescriptive Statistics and Data Aggregation](TBA)
+9) [Descriptive Statistics and Data Aggregation](TBA)
 10) [Linear Regression Analysis](TBA)
 
 ## Resources
