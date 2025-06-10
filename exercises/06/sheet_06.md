@@ -157,51 +157,70 @@ gnuplot Absences EmpSatisfaction --output=display \
 
 Complete the following tasks:
 
-1. Download the 'Zurich Dogs CSV' dataset from the course materials and extract it.
-2. Write a script to load the file '20151001hundehalter.csv' and display it in the data viewer.
-3. Create appropriate visualizations for the `ALTER` (age) and `GEBURTSJAHR_HUND` (dog birth year) columns.
+1. Download the 'Zurich Dogs CSV' dataset (`20151001hundehalter.csv`) from https://github.com/gretl-project/hansl-coding/tree/main/data/dogsofzurich
+
+2. Write a Gretl script to load this file and display it in the data viewer.
+<details>
+<summary>Solution</summary>
+<pre><code class="language-hansl"># Script for the Zurich Dogs dataset
+open "20151001hundehalter.csv"
+# Display column names
+varlist
+print dataset --byobs --range=1:10  # Show first 10 rows
+</code></pre>
+</details>
+
+3. Create appropriate visualizations for the `ALTER` (age of dog) and `GEBURTSJAHR_HUND` (dog birth year) columns.
+<details>
+<summary>Solution</summary>
+<pre><code class="language-hansl"># Create histograms
+freq ALTER --plot=display
+freq GEBURTSJAHR_HUND --plot=display
+</code></pre>
+</details>
+
+<details>
+<summary>Solution</summary>
+<pre><code class="language-hansl"># Create scatter plot
+smpl 1900 2020   # restrict years
+gnuplot ALTER GEBURTSJAHR_HUND --output=display \
+  {set title "Relationship between Dogs' Age and Dogs' Year of Birth";}
+smpl full  # reset to full sample
+</code></pre>
+</details>
+
 4. Display the statistical summary for the entire dataset. For which columns is the statistical analysis meaningfully interpretable?
+<details>
+<summary>Solution</summary>
+<pre><code class="language-hansl"># Show statistical summary
+summary dataset #--simple
+# The statistical analysis is most meaningful for numeric columns like:
+# - GEBURTSJAHR_HUND (dog birth year)
+# Most other columns are categorical and/ or are string series
+</code></pre>
+</details>
+
 5. Sort the dataset in descending order by dog age. Show the ten oldest dogs. Which breeds do they belong to?
-6. Which dogs are owned by the youngest dog owners? Which dogs are owned by the oldest dog owners?
+<details>
+<summary>Solution</summary>
+<pre><code class="language-hansl"># Sort by dog age in descending order
+dataset dsortby ALTER
+# Show the ten oldest dogs and their breeds
+print ALTER RASSE1 RASSE1_MISCHLING  --byobs --range=1:10
+</code></pre>
+</details>
 
-```hansl
-# Script for the Zurich Dogs dataset
-open 20151001hundehalter.csv
 
-# Display dataset information
-print $datainfo
-
-# Show statistical summary
-summary --simple
-
-# Calculate and visualize dog age
-series DOG_AGE = $year - GEBURTSJAHR_HUND
-setinfo DOG_AGE "Dog age in years"
-
-# Create visualizations
-gnuplot ALTER --histogram --output=display
-gnuplot GEBURTSJAHR_HUND --histogram --output=display
-gnuplot ALTER DOG_AGE --scatter --output=display
-
-# Sort by dog age, show oldest dogs
-series SORTINDEX = DOG_AGE
-sort SORTINDEX --descending
-smpl 1 10
-print HUNDENAME RASSE DOG_AGE
-smpl full
-
-# Find dogs owned by youngest owners
-series SORTINDEX = ALTER
-sort SORTINDEX
-smpl 1 10
-print HUNDENAME RASSE ALTER
-smpl full
-
-# Find dogs owned by oldest owners
-sort SORTINDEX --descending
-smpl 1 10
-print HUNDENAME RASSE ALTER
-smpl full
-```
-
-The exercises above will help you become familiar with Gretl's data handling, analysis, and visualization capabilities. Working through them will provide you with practical skills needed for econometric analysis using Gretl's hansl scripting language.
+6. Which dogs are the youngest? Which dogs are the oldest?
+<details>
+<summary>Solution</summary>
+<pre><code class="language-hansl"># Sort by dog age in ascending order
+dataset dsortby ALTER
+# Show youngest dogs (first 10)
+printf "\nYoungest dogs:\n"
+print ALTER RASSE1 --byobs --range=1:10
+# Show oldest dogs (first 10)
+printf "\nOldest dogs:\n"
+print ALTER RASSE1 --byobs --range=-10:
+</code></pre>
+</details>
