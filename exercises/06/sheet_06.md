@@ -149,7 +149,7 @@ print Employee_Name EmpID --byobs --range=10:20
 gnuplot EmpSatisfaction --histogram --output=display
 gnuplot Absences --histogram --output=display
 gnuplot Absences EmpSatisfaction --output=display \
-{ set jitter over 0.5 spread 0.5;}
+  { set jitter over 0.5 spread 0.5;}
 </code></pre>
 </details>
 
