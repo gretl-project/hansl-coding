@@ -91,7 +91,6 @@ summary EmpSatisfaction   #--simple
 <summary>Solution</summary>
 <pre><code class="language-hansl"># Select and display employee names
 eval strvals(Employee_Name)  # initial 10 only
-
 # print all distinct names
 strings Names = strvals(Employee_Name)
 loop foreach i Names
