@@ -218,16 +218,3 @@ gnuplot ALTER --dummy-axis=is_type2 --boxplot --output=display \
   {set title "Age Comparison: All Owners vs. Type II Dog Owners";}
 </code></pre>
 </details>
-
-The exercises have been formatted following the same style as the previous exercise sheets, with detailed solutions enclosed in collapsible blocks. Each solution includes appropriate Gretl/hansl commands for:
-
-1. Loading data files
-2. Calculating new columns and normalizing data
-3. Deleting columns and rows
-4. Joining datasets
-5. Handling missing values
-6. Counting and grouping data by categories
-7. Filtering specific breeds and types
-8. Creating visualizations for comparing distributions
-
-These exercises help students develop skills in data manipulation, transformation, and visualization using Gretl's hansl scripting language.
