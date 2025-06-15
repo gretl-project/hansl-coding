@@ -12,23 +12,22 @@ scalar a = b
 
 <details>
 <summary>Solution</summary>
-# Initial state:
-#   a contains an integer value
-#   b contains an integer value
+    
+#### Initial state:
+- a contains an integer value
+- b contains an integer value
 
-# After line 1 (t = a):
-#   t points to the same value as a
+#### After line 1 (t = a):
+- t points to the same value as a
 
-# After line 2 (b = t):
-#   b now points to the same value as t (and thus a)
-#   The original value of b is overwritten
-
-# After line 3 (a = b):
-#   a continues to point to the same value since b already points to a's value
-
-# Conclusion:
-# This code does not actually swap values but makes all three variables (a, b, t)
-# reference the original value of a. The original value of b is lost.
+#### After line 2 (b = t):
+- b now points to the same value as t (and thus a)
+- The original value of b is overwritten
+- 
+#### After line 3 (a = b):
+- a continues to point to the same value since b already points to a's value
+#### Conclusion:
+This code does not actually swap values but makes all three variables (a, b, t) reference the original value of a. The original value of b is lost.
 </details>
 
 ## Exercise 2: Compound Interest Calculation
