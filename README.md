@@ -5,7 +5,7 @@ This course introduces programming using Gretl's scripting language named *hansl
 
 ## Topics
 
-1) [Data Import and Manipulation](exercises/01/sheet_01.md)
+1) [Setup, "Hello, world!" and typical errors](exercises/01/sheet_01.md)
 2) [Data Types, References, Literals and Operators](exercises/02/sheet_02.md)
 3) [Variables, Control Flow, Loop and Data Structures](exercises/03/sheet_03.md)
 4) [Types, Bundles, and Functions](exercises/04/sheet_04.md)
