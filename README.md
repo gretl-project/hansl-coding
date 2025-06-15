@@ -15,6 +15,7 @@ This course introduces programming using Gretl's scripting language named *hansl
 8) [Data Imputation and Visualization](TBA)
 9) [Descriptive Statistics and Data Aggregation](TBA)
 10) [Linear Regression Analysis](TBA)
+11) [Classification Analysis](TBA)
 
 ## Resources
 - [gretl-Cheatsheet on Data-Handling](https://github.com/gretl-project/gretl_cheatsheet/blob/master/datahandling.pdf)
