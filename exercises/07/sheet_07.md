@@ -87,10 +87,10 @@ Complete the following tasks:
 open "20151001hundehalter.csv"
 print "Dogs dataset loaded"
 varlist
-
-# Save the dogs dataset to a temporary file for later use
+</code></pre>
+    
+<pre><code class="language-hansl"># Save the dogs dataset to a temporary file for later use
 store "@dogs.gdt"
-
 # Load the dog breed type mapping
 open "zuordnungstabellehunderassehundetyp.csv"
 print "Dog breed types dataset loaded"
@@ -104,14 +104,15 @@ varlist
 <pre><code class="language-hansl"># We can merge on the RASSE column
 # First, store the breed types dataset
 store "@breedtypes.gdt"
-
-# Then load the dogs dataset again
+</code></pre>
+    
+<pre><code class="language-hansl"># Then load the dogs dataset again
 open "@dogs.gdt"
-
 # Join using the dog breed column
 join RASSE --data=HUNDERASSENTYP "@breedtypes.gdt"
+</code></pre>
 
-# Display the result
+<pre><code class="language-hansl"># Display the result
 print HUNDENAME RASSE HUNDERASSENTYP --byobs --range=1:10
 </code></pre>
 </details>
@@ -122,21 +123,25 @@ print HUNDENAME RASSE HUNDERASSENTYP --byobs --range=1:10
 <pre><code class="language-hansl"># Check for dogs without breed type
 series missing_breed_type = ok(HUNDERASSENTYP) ? 0 : 1
 printf "Number of dogs without breed type: %d\n", sum(missing_breed_type)
-
-# Count occurrences
+</code></pre>
+    
+<pre><code class="language-hansl"># Count occurrences
 freq missing_breed_type
+</code></pre>
 
-# Display some examples of missing breed types
+<pre><code class="language-hansl"># Display some examples of missing breed types
 smpl missing_breed_type == 1 --restrict
 print HUNDENAME RASSE HUNDERASSENTYP --byobs --range=1:10
 smpl full
+</code></pre>
 
-# Check for incomplete entries in the breed mapping (load mapping dataset)
+<pre><code class="language-hansl"># Check for incomplete entries in the breed mapping (load mapping dataset)
 open "@breedtypes.gdt"
 series incomplete_mapping = (ok(HUNDERASSENTYP) && strlen(HUNDERASSENTYP) > 0) ? 0 : 1
 printf "Number of incomplete mappings: %d\n", sum(incomplete_mapping)
+</code></pre>
 
-# Show incomplete mappings if any
+<pre><code class="language-hansl"># Show incomplete mappings if any
 if sum(incomplete_mapping) > 0
     smpl incomplete_mapping == 1 --restrict
     print RASSE HUNDERASSENTYP --byobs
@@ -151,14 +156,16 @@ endif
 <pre><code class="language-hansl"># Load the merged dataset
 open "@dogs.gdt"
 join RASSE --data=HUNDERASSENTYP "@breedtypes.gdt"
-
-# Replace missing values with 'Unknown'
+</code></pre>
+    
+<pre><code class="language-hansl"># Replace missing values with 'Unknown'
 series missing_type = ok(HUNDERASSENTYP) ? 0 : 1
 smpl missing_type == 1 --restrict
 series string HUNDERASSENTYP = "Unknown"
 smpl full
+</code></pre>
 
-# Verify the change
+<pre><code class="language-hansl"># Verify the change
 freq HUNDERASSENTYP
 </code></pre>
 </details>
@@ -168,8 +175,9 @@ freq HUNDERASSENTYP
 <summary>Solution</summary>
 <pre><code class="language-hansl"># Count dogs by breed type
 freq HUNDERASSENTYP
-
-# Alternative approach with more control over output
+</code></pre>
+    
+<pre><code class="language-hansl"># Alternative approach with more control over output
 strings breed_types = strvals(HUNDERASSENTYP)
 printf "Count of dogs by breed type:\n"
 printf "-------------------------\n"
