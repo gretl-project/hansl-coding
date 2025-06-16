@@ -4,9 +4,9 @@ set verbose off
 string URL = "https://raw.githubusercontent.com/gretl-project/hansl-coding/refs/heads/main/data/HRDataset_v14.csv"
 string FILENAME = "HRDataset_v14.csv"
 
-# open "@URL"  # One can directly open a URL in gretl
+# open "@URL" --preserve  # One can directly open a URL in gretl
 # store "@FILENAME"
-open "@FILENAME"  # One can directly open a URL in gretl
+open "@FILENAME" --preserve # One can directly open a URL in gretl
 varlist
 
 # Ex. 3: Show first 11 rows
