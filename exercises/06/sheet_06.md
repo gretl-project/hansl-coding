@@ -146,8 +146,8 @@ print Employee_Name EmpID --byobs --range=10:20
 <details>
 <summary>Solution</summary>
 <pre><code class="language-hansl"># Create visualizations
-gnuplot EmpSatisfaction --histogram --output=display
-gnuplot Absences --histogram --output=display
+freq EmpSatisfaction --plot=display
+freq Absences --normal --plot=display
 gnuplot Absences EmpSatisfaction --output=display \
   { set jitter over 0.5 spread 0.5;}
 </code></pre>
