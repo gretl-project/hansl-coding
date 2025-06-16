@@ -157,7 +157,21 @@ gnuplot Absences EmpSatisfaction --output=display \
 
 Complete the following tasks:
 
-1. Download the 'Zurich Dogs CSV' dataset (`20151001hundehalter.csv`) from https://github.com/gretl-project/hansl-coding/tree/main/data/dogsofzurich
+1. Open the 'Zurich Dogs CSV' dataset (`20151001hundehalter.csv`) directly from the following URL and store it as `20151001hundehalter.csv`
+
+<details>
+<summary>Solution</summary>
+string URL = "https://raw.githubusercontent.com/gretl-project/hansl-coding/refs/heads/main/data/dogsofzurich/20151001hundehalter.csv"
+string FILENAME = "20151001hundehalter.csv"
+
+open "@URL"  # One can directly open a URL in gretl
+store "@FILENAME"
+# Alternatively, you can download the file manually and then open it
+# open "@FILENAME"  # One can directly open a URL in gretl
+# varlist
+</code></pre>
+</details>
+
 
 2. Write a Gretl script to load this file and display it in the data viewer.
 <details>
