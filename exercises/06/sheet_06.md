@@ -36,7 +36,7 @@ Work through the following tasks, using the Gretl functions reference and exampl
 2. Write a Gretl script to load this dataset and display it in the data viewer.
 <details>
 <summary>Solution</summary>
-<pre><code class="language-hansl"># Example script to load and examine the HR dataset
+<pre><code class="language-hansl"># exercise_2.inp
 open "<PATH_TO_YOUR_FILE>/HRDataset_v14.csv"
 varlist
 </code></pre>
@@ -163,6 +163,7 @@ URL: https://raw.githubusercontent.com/gretl-project/hansl-coding/refs/heads/mai
 
 <details>
 <summary>Solution</summary>
+<pre><code class="language-hansl"># exercise_3.inp
 string URL = "https://raw.githubusercontent.com/gretl-project/hansl-coding/refs/heads/main/data/dogsofzurich/20151001hundehalter.csv"
 string FILENAME = "20151001hundehalter.csv"
 
