@@ -178,8 +178,7 @@ Alternatively, you can download the file manually and then open it by ```open "@
 2. Display the column names of the dataset and show the first 10 rows.
 <details>
 <summary>Solution</summary>
-<pre><code class="language-hansl">
-varlist
+<pre><code class="language-hansl">varlist
 print dataset --byobs --range=1:10  # Show first 10 rows
 </code></pre>
 </details>
