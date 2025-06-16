@@ -1,0 +1,41 @@
+set verbose off
+
+# Download the data
+string FILENAME = "../../data/HRDataset_v14.csv"
+
+# Ex 2: Open the dataset
+open "@FILENAME" --preserve # One can directly open a URL in gretl
+varlist
+
+# Ex. 3: Calculate salary in thousands
+series SalaryThousands = Salary / 1000
+print Salary SalaryThousands --byobs --range=1:10
+
+# Ex. 4: Normalize EmpSatisfaction to [0,1] range
+scalar min_sat = min(EmpSatisfaction)
+scalar max_sat = max(EmpSatisfaction)
+series NormalizedSatisfaction = (EmpSatisfaction - min_sat) / (max_sat - min_sat)
+# Display results
+print EmpSatisfaction NormalizedSatisfaction --byobs --range=1:10
+# Descriptive statistics
+summary EmpSatisfaction NormalizedSatisfaction --simple
+# Calculate correlation
+corr EmpSatisfaction NormalizedSatisfaction
+
+# Ex. 5: Delete columns
+list DROP = Position PositionID
+delete DROP
+# Show dataframe (columns)
+varlist
+
+# Ex. 6: Try to delete non-existent column
+#delete Foo
+# This would show an error message like:
+# "Unknown variable name in command"
+
+# Delete specific rows
+printf "Number of rows before: %d\n", $nobs
+series to_keep = (EmpID != 10066) && (EmpID != 10226) && (EmpID != 10181)
+# Activate the "--permanent" flag to delete rows in place
+smpl to_keep --restrict --permanent
+printf "Number of rows now: %d\n", $nobs
