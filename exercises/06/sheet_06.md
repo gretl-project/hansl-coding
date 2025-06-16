@@ -169,10 +169,13 @@ string FILENAME = "20151001hundehalter.csv"
 
 open "@URL"  # One can directly open a URL in gretl
 store "@FILENAME"
-# Alternatively, you can download the file manually and then open it
-# open "@FILENAME"  # One can directly open a URL in gretl
-# varlist
+varlist
 </code></pre>
+Alternatively, you can download the file manually and then open it
+
+```hansl
+open "@FILENAME"  # One can directly open a URL in gretl
+```
 </details>
 
 
