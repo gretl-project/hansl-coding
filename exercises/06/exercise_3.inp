@@ -1,0 +1,56 @@
+set verbose off
+
+# Download the data
+string URL = "https://raw.githubusercontent.com/gretl-project/hansl-coding/refs/heads/main/data/dogsofzurich/20151001hundehalter.csv"
+string FILENAME = "20151001hundehalter.csv"
+
+#open "@URL" --preserve # One can directly open a URL in gretl
+#store "@FILENAME"
+
+open "@FILENAME" --preserve  # One can directly open a URL in gretl
+varlist
+
+# Ex. 2: Show first 11 rows
+varlist
+print dataset --byobs --range=1:10  # Show first 10 rows
+
+# Ex. 3: Create frequency plots
+freq ALTER --plot="frequency_plot_ALTER.png"
+kdplot GEBURTSJAHR_HUND --output="kdplot_GEBURTSJAHR_HUND.png"
+
+# Ex. 4: Restrict the dataset
+smpl 1900 2020   # restrict years
+kdplot GEBURTSJAHR_HUND --output="kdplot_GEBURTSJAHR_HUND.png"
+smpl full  # reset to full sample
+
+# Ex. 5: Show statistical summary
+summary dataset #--simple
+# The statistical analysis is most meaningful for numeric columns like:
+# - GEBURTSJAHR_HUND (dog birth year)
+# Most other columns are categorical and/ or are string series
+
+# Ex. 6: Grouped statistics
+summary GEBURTSJAHR_HUND --by=GESCHLECHT --simple
+
+
+# Ex. 7: # Sort by dog birth year
+dataset sortby GEBURTSJAHR_HUND
+# Show the ten city districts with the most dogs
+print GEBURTSJAHR_HUND RASSE1 RASSE1_MISCHLING GESCHLECHT_HUND \
+  --byobs --range=1:10
+
+# Ex. 8:
+# Download the PandasPort package
+#pkg install PandasPort
+# Load into the package into memory
+include PandasPort.gfn
+# Read the documentation for the PandasPort package
+#help PandasPort
+
+# Ex. 9: # Count the number of dogs by birth year
+table = value_counts(RASSE1)
+print table
+
+# 10: # Sort the table by count and display the top 10 breeds
+matrix table_sorted = mreverse(msortby(table, 2))
+print table_sorted[1:10,]
