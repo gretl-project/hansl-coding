@@ -1,0 +1,63 @@
+set verbose off
+
+# Download the data
+string URL = "https://raw.githubusercontent.com/gretl-project/hansl-coding/refs/heads/main/data/HRDataset_v14.csv"
+string FILENAME = "HRDataset_v14.csv"
+
+# open "@URL"  # One can directly open a URL in gretl
+# store "@FILENAME"
+open "@FILENAME"  # One can directly open a URL in gretl
+varlist
+
+# Ex. 3: Show first 11 rows
+print dataset --byobs --range=1:11
+
+# Ex. 4: Show last 6 rows
+print dataset --byobs --range=-6:
+
+# Ex. 5:
+varlist
+
+# Ex. 6: Display data types
+list L = dataset
+loop foreach i L
+    printf "Variable: %s, Type: %s\n", "$i", typename($i)
+endloop
+
+# Ex. 7: Calculate statistics
+list L = Salary EmpSatisfaction
+summary L   #--simple
+
+# Ex. 8: Select and display employee names
+eval strvals(Employee_Name)  # initial 10 only
+# print all distinct names
+strings Names = strvals(Employee_Name)
+loop foreach i Names
+    print "$i"
+endloop
+
+# Ex. 9: Select and display non-US citizens
+series nonUS = (CitizenDesc != "US Citizen")  # boolean mask series
+smpl nonUS  == TRUE --restrict
+print Employee_Name CitizenDesc --byobs
+smpl full  # reset to full sample
+
+# Ex. 10: Sort by salary and show highest-paid employees
+dataset dsortby Salary
+print Employee_Name Salary --byobs --range=1:1
+
+# Ex. 11: Select rows where EmpID is between 10100 and 10150
+series range_emp = (EmpID >= 10100 && EmpID <= 10150)
+smpl range_emp --restrict
+print Employee_Name EmpID
+smpl full
+
+# Ex. 12: # Sort by EmpID and display rows 10-20
+dataset sortby EmpID
+print Employee_Name EmpID --byobs --range=10:20
+
+# Ex. 13: # Create visualizations
+freq EmpSatisfaction --plot=display
+freq Absences --normal --plot=display
+gnuplot Absences EmpSatisfaction --output=display \
+  { set jitter over 0.5 spread 0.5;}
