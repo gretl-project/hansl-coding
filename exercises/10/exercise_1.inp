@@ -1,0 +1,72 @@
+set verbose off
+
+FILENAME = "housing.csv"
+
+# Open the dataset
+open "../../data/@FILENAME" --preserve
+varlist
+
+# Ex 2: Show first 11 rows
+print dataset --byobs --range=1:11
+
+# Ex 3: Create list of features
+list features = dataset  # Start with all variables
+# Remove target variable and unwanted variables
+features -= median_house_value longitude latitude ocean_proximity
+print features --byobs --range=1:5
+print varnames(features)
+
+# Ex 4: Create dummies for ocean_proximity
+list dum = dummify(ocean_proximity, 1)
+print varnames(dum)
+summary dum --simple
+
+# Ex. 5: # Run OLS regression
+list features += dum  # Add dummies to features list
+ols median_house_value features
+
+# Ex. 6: Store some model information
+scalar r2_score = $rsq
+matrix bhat = $coeff
+print r2_score
+print bhat
+
+# Ex. 7: Plot fitted values vs actuals
+series yhat = $yhat
+
+# Create scatter plot of predicted vs actual values
+gnuplot yhat median_house_value --output="yhat_vs_actual.png" \
+  { set title "Predicted vs Actual House Values";\
+    set xlabel "Predicted Value";\
+    set ylabel "Actual Value";\
+    set grid;\
+    set xrange[-200000:600000];\
+    set yrange[-200000:600000];}
+
+
+# Ex. 8: # Function to calculate error metrics
+function void calculate_errors(series actual, series predicted)
+    # Calculate residuals
+    series error = actual - predicted
+
+    # Mean Error (ME)
+    scalar me = mean(error)
+
+    # Root Mean Squared Error (RMSE)
+    scalar rmse = sqrt(mean(error^2))
+
+    # Mean Absolute Error (MAE)
+    scalar mae = mean(abs(error))
+
+    printf "Error Metrics:\n"
+    printf "Mean Error (ME): %.2f\n", me
+    printf "Root Mean Squared Error (RMSE): %.2f\n", rmse
+    printf "Mean Absolute Error (MAE): %.2f\n", mae
+end function
+
+# Calculate and print error metrics
+calculate_errors(median_house_value, yhat)
+
+# Ex. 9: # Create a histogram of residuals
+series residuals = median_house_value - yhat
+freq residuals --normal --plot="residuals_histogram.png"
