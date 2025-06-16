@@ -157,7 +157,9 @@ gnuplot Absences EmpSatisfaction --output=display \
 
 Complete the following tasks:
 
-1. Open the 'Zurich Dogs CSV' dataset (`20151001hundehalter.csv`) directly from the following URL and store it as `20151001hundehalter.csv`
+1. Open the 'Zurich Dogs CSV' dataset (`20151001hundehalter.csv`) directly from the following URL and store it as `20151001hundehalter.csv`:
+
+URL: https://raw.githubusercontent.com/gretl-project/hansl-coding/refs/heads/main/data/dogsofzurich/20151001hundehalter.csv
 
 <details>
 <summary>Solution</summary>
