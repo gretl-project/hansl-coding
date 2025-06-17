@@ -124,14 +124,15 @@ freq residuals --normal --plot=display
 <details>
 <summary>Solution</summary>
 <pre><code class="language-hansl"># Add squared terms
-series median_income_squared = median_income^2
-series housing_median_age_squared = housing_median_age^2
-
+series median_income_sq = median_income^2
+series housing_median_age_sq = housing_median_age^2
+#
 # Print sample of original and squared variables
-print median_income median_income_squared housing_median_age housing_median_age_squared --byobs --range=1:10
-
+print median_income median_income_sq housing_median_age housing_median_age_sq --byobs --range=1:10
+#
 # Add new features to the feature list
-features += median_income_squared housing_median_age_squared
+features += median_income_sq housing_median_age_sq
+print varnames(features)
 </code></pre>
 </details>
 
@@ -140,39 +141,39 @@ features += median_income_squared housing_median_age_squared
 <summary>Solution</summary>
 <pre><code class="language-hansl"># Run OLS with polynomial terms
 printf "\nRunning regression with polynomial terms:\n"
-ols $TARGET features
-
+ols median_house_value features
 # Store R-squared for comparison
 scalar r2_score_poly = $rsq
-
-# Compare with previous model
+</code></pre>
+<pre><code class="language-hansl"># Compare with previous model
 printf "\nModel Comparison:\n"
 printf "Basic model R-squared: %.4f\n", r2_score
 printf "Polynomial model R-squared: %.4f\n", r2_score_poly
 printf "Improvement: %.4f\n", r2_score_poly - r2_score
-
-# Store fitted values
+</code></pre>
+<pre><code class="language-hansl"># Store fitted values
 series predicted_poly = $yhat
-
+#
 # Calculate residuals for the polynomial model
-series residuals_poly = $TARGET - predicted_poly
-
-# Calculate error metrics for the polynomial model
-calculate_errors(residuals_poly)
-
+series residuals_poly = median_house_value - predicted_poly
+#
+printf "\n*** Error metrics for the bechmark model ***\n"
+calculate_errors(median_house_value, yhat)
+#
+printf "\n*** Error metrics for the polynomial model ***\n"
+calculate_errors(median_house_value, predicted_poly)
+#
 # Plot histogram of residuals for polynomial model
-plot_residuals_histogram(residuals_poly)
-
-# Compare scatter plots of predictions
-gnuplot predicted $TARGET predicted_poly $TARGET --output=display \
-  {
-    set title "Predicted vs Actual Values - Model Comparison";
-    set xlabel "Predicted Value";
-    set ylabel "Actual Value";
-    set key top left;
-    plot $1 using 1:2 title "Basic Model" pt 7 ps 0.5, \
-         $1 using 3:4 title "Polynomial Model" pt 7 ps 0.5;
-  }
+freq residuals_poly --normal --plot=display
+</code></pre>
+<pre><code class="language-hansl"># Scatter plot of predictions
+gnuplot predicted_poly median_house_value --output=display \
+  { set title "Predicted (polynomial OLS) vs Actual Values";\
+    set xlabel "Predicted Value";\
+    set ylabel "Actual Value";\
+    set grid;\
+    set xrange[-200000:600000];\
+    set yrange[-200000:600000];}
 </code></pre>
 </details>
 
