@@ -1,5 +1,10 @@
 set verbose off
 
+#########################
+# EXERCISE 1
+#########################
+
+# Parameters
 FILENAME = "housing.csv"
 
 # Open the dataset
@@ -70,3 +75,53 @@ calculate_errors(median_house_value, yhat)
 # Ex. 9: # Create a histogram of residuals
 series residuals = median_house_value - yhat
 freq residuals --normal --plot="residuals_histogram.png"
+
+#########################
+# EXERCISE 2
+#########################
+
+# EX 1: Add squared terms
+series median_income_sq = median_income^2
+series housing_median_age_sq = housing_median_age^2
+#
+# Print sample of original and squared variables
+print median_income median_income_sq housing_median_age housing_median_age_sq --byobs --range=1:10
+
+# Add new features to the feature list
+features += median_income_sq housing_median_age_sq
+features   # print variable names in list
+
+# EX 2: # Run OLS with polynomial terms
+printf "\nRunning regression with polynomial terms:\n"
+ols median_house_value features
+# Store R-squared for comparison
+scalar r2_score_poly = $rsq
+
+# Compare with previous model
+printf "\nModel Comparison:\n"
+printf "Basic model R-squared: %.4f\n", r2_score
+printf "Polynomial model R-squared: %.4f\n", r2_score_poly
+printf "Improvement: %.4f\n", r2_score_poly - r2_score
+
+# Store fitted values
+series predicted_poly = $yhat
+# Calculate residuals for the polynomial model
+series residuals_poly = median_house_value - predicted_poly
+#
+printf "\n*** Error metrics for the bechmark model ***\n"
+calculate_errors(median_house_value, yhat)
+#
+printf "\n*** Error metrics for the polynomial model ***\n"
+calculate_errors(median_house_value, predicted_poly)
+#
+# Plot histogram of residuals for polynomial model
+freq residuals_poly --normal --plot="histogram_residuals_poly.png"
+
+# Scatter plot of predictions
+gnuplot predicted_poly median_house_value --output="scatter_predicted_vs_actual_poly.png" \
+  { set title "Predicted (polynomial OLS) vs Actual Values";\
+    set xlabel "Predicted Value";\
+    set ylabel "Actual Value";\
+    set grid;\
+    set xrange[-200000:600000];\
+    set yrange[-200000:600000];}
