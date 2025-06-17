@@ -177,7 +177,7 @@ gnuplot predicted_poly median_house_value --output=display \
 </code></pre>
 </details>
 
-## Exercise 3: Model Regularization
+<!-- ## Exercise 3: Model Regularization
 
 1. Apply regularization to the model and plot the R² value as a function of the regularization parameter λ.
 <details>
@@ -272,4 +272,4 @@ printf "R-squared: %.4f\n", $rsq
 </code></pre>
 </details>
 
-These exercises provide a comprehensive introduction to linear regression in Gretl, covering basic OLS estimation, polynomial features for nonlinear relationships, and regularization techniques. The solutions include code for data preparation, model estimation, performance evaluation, and visualization of results.
+These exercises provide a comprehensive introduction to linear regression in Gretl, covering basic OLS estimation, polynomial features for nonlinear relationships, and regularization techniques. The solutions include code for data preparation, model estimation, performance evaluation, and visualization of results. -->
