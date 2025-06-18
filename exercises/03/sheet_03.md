@@ -175,9 +175,9 @@ Analyze the following program. Why does it produce an error when executed?
 
 ```hansl
 matrix a = {}
-loop for (scalar v=0; v<10; v++)
+loop for (v=1; v<=10; v++)
     a[v] = v * v
-end loop
+endloop
 ```
 
 <details>
@@ -191,7 +191,7 @@ The error occurs because:
 Correct version:
 <pre><code class="language-hansl"># append_to_vector.inp
 matrix a = zeros(10, 1)  # Initialize with 10 zeros
-loop v=1..rows(a)
+loop for (v=1; v<=10; v++)
     a[v] = v * v
 endloop
 print a
