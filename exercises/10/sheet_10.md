@@ -42,13 +42,13 @@ summary dum --simple
 </code></pre>
 </details>
 
-5. Add the new dummies to the features list and run the OLS estimation using the prepared features and target variable. Use the built-in `ols` command.
+5. Add the new dummies to the features list. Run the OLS estimation using the prepared features (add an intercept `const`, too) and target variable. Use the built-in `ols` command.
 <details>
 <summary>Solution</summary>
 <pre><code class="language-hansl"># Run OLS regression
 list features += dum  # Add dummies to features list
 # Run OLS regression
-ols median_house_value features
+ols median_house_value const features
 </code></pre>
 </details>
 
@@ -63,14 +63,14 @@ print bhat
 </code></pre>
 </details>
 
-7. Save the fitted values (in-sample predictions) and compare them with the actual values in a scatter plot. Set the range of the x and y axes to [-20000; 600000] and add appropriate labels and a title.
+7. Save the fitted values (in-sample predictions) and name the series `prediction_insample`. Compare the predictions them with the actual values in a scatter plot. Set the range of the x and y axes to [-20000; 600000] and add appropriate labels and a title.
 <details>
 <summary>Solution</summary>
 <pre><code class="language-hansl"># Store fitted values
-series yhat = $yhat
+series prediction_insample = $yhat
 #
 # Create scatter plot of predicted vs actual values
-gnuplot yhat median_house_value --output=display \
+gnuplot prediction_insample median_house_value --output=display \
   { set title "Predicted vs Actual House Values";\
     set xlabel "Predicted Value";\
     set ylabel "Actual Value";\
@@ -105,7 +105,7 @@ function void calculate_errors(series actual, series predicted)
 end function
 #
 # Calculate and print error metrics
-calculate_errors(median_house_value, predicted)
+calculate_errors(median_house_value, prediction_insample)
 </code></pre>
 </details>
 
@@ -113,8 +113,17 @@ calculate_errors(median_house_value, predicted)
 <details>
 <summary>Solution</summary>
 <pre><code class="language-hansl"># Plot histogram of residuals
-series residuals = median_house_value - yhat
+series residuals = median_house_value - prediction_insample
 freq residuals --normal --plot=display
+</code></pre>
+</details>
+
+10. Store the series `median_house_price` and `prediction_insample` as a csv file. Look into the csv using your spreadsheet program.
+<details>
+<summary>Solution</summary>
+<pre><code class="language-hansl"># Write series to csv
+list Export = median_house_price prediction_insample
+store "dataset_target_predictions.csv" Export
 </code></pre>
 </details>
 
@@ -141,7 +150,7 @@ print varnames(features)
 <summary>Solution</summary>
 <pre><code class="language-hansl"># Run OLS with polynomial terms
 printf "\nRunning regression with polynomial terms:\n"
-ols median_house_value features
+ols median_house_value const features
 # Store R-squared for comparison
 scalar r2_score_poly = $rsq
 </code></pre>
@@ -152,22 +161,22 @@ printf "Polynomial model R-squared: %.4f\n", r2_score_poly
 printf "Improvement: %.4f\n", r2_score_poly - r2_score
 </code></pre>
 <pre><code class="language-hansl"># Store fitted values
-series predicted_poly = $yhat
+series prediction_insample_poly = $yhat
 #
 # Calculate residuals for the polynomial model
-series residuals_poly = median_house_value - predicted_poly
+series residuals_poly = median_house_value - prediction_insample_poly
 #
 printf "\n*** Error metrics for the bechmark model ***\n"
-calculate_errors(median_house_value, yhat)
+calculate_errors(median_house_value, prediction_insample)
 #
 printf "\n*** Error metrics for the polynomial model ***\n"
-calculate_errors(median_house_value, predicted_poly)
+calculate_errors(median_house_value, prediction_insample_poly)
 #
 # Plot histogram of residuals for polynomial model
 freq residuals_poly --normal --plot=display
 </code></pre>
 <pre><code class="language-hansl"># Scatter plot of predictions
-gnuplot predicted_poly median_house_value --output=display \
+gnuplot prediction_insample_poly median_house_value --output=display \
   { set title "Predicted (polynomial OLS) vs Actual Values";\
     set xlabel "Predicted Value";\
     set ylabel "Actual Value";\
