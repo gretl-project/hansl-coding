@@ -19,7 +19,7 @@ intro_to_gretl
 
 ## Exercise 2: Hello World
 
-Create a script that prints the message 'Hello, world!' three times, each on a new line. Save the script as `hello_world.inp` in the `exercise_1` folder and run it.
+Create a script that prints the message 'Hello, world!' three times, each on a new line. Make either use of the [`print`](https://gretl.sourceforge.net/gretl-help/cmdref.html#print) or [`printf`](https://gretl.sourceforge.net/gretl-help/cmdref.html#printf) command. Save the script as `hello_world.inp` in the `exercise_1` folder and run it.
 
 You may execute either way:
 
@@ -41,7 +41,7 @@ printf "Hello, world!\n"
 
 Create a new script `common_errors.inp` that demonstrates what happens when you make these common mistakes in hansl:
 
-1) In gretl you can load external libraries by means of the `include` command, e.g. `include extra`. What happens if the `include` statement is missing?
+1) In gretl you can load external libraries by means of the [`include`]([`print`](https://gretl.sourceforge.net/gretl-help/cmdref.html#include)) command, e.g. `include extra`. What happens if the `include` statement is missing?
 2) Trying to use a function named `foo()` which does not exist
 3) Misspelling a built-in command (e.g., `prnit` instead of `print`)
 
@@ -86,7 +86,7 @@ printf "Hi %s, %s and %s\n", name3, name2, name1
 ``` -->
 
 ## Exercise 5: Formatted Printing I
-Create a script `print_names.inp`. Create a string variables and print them in a formatted way. Use the `printf` [Click for details](https://gretl.sourceforge.net/gretl-help/cmdref.html#printf) function to format the output:
+Create a script `print_names.inp`. Create a string variable and print it in a formatted way. Use the [`printf`](https://gretl.sourceforge.net/gretl-help/cmdref.html#printf) function to format the output:
 
 ```hansl
 string name1 = "Alice"
