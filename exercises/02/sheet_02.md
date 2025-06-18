@@ -199,7 +199,9 @@ printf "h: %s\n", typename(h)
 The data types in hansl/gretl are:
 - a: string (text values)
 - b: scalar (integer)
-- c: scalar (float)
+- c: scalar (float)printf "h: %s\n", typename(h)
+printf "i: %s\n", typename(i)
+
 - d: matrix (row vector here)
 - e: bundle (key-value collection)
 - f: scalar (boolean)
