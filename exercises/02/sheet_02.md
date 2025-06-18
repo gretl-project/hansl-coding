@@ -12,7 +12,7 @@ scalar a = b
 
 <details>
 <summary>Solution</summary>
-    
+
 #### Initial state:
 - a contains an integer value
 - b contains an integer value
@@ -23,7 +23,7 @@ scalar a = b
 #### After line 2 (b = t):
 - b now points to the same value as t (and thus a)
 - The original value of b is overwritten
-- 
+-
 #### After line 3 (a = b):
 - a continues to point to the same value since b already points to a's value
 #### Conclusion:
@@ -161,29 +161,27 @@ scalar approx = log(y) - log(x)
 
 ## Exercise 7: Data Types
 
-Determine the data type of each of the following literals. Write a hansl program that stores these values in variables and prints their types using the `typeof()` function.
+Determine the data type of each of the following literals. Write a hansl program that stores these values in variables and prints their types using the `typename()` function.
 
 ```hansl
-scalar a = "hello, world"
-scalar b = 3
-scalar c = 3.14
-matrix d = {1, 2, 3}
-string e = "gretl doesn't have tuples"
-string f = "gretl doesn't have sets"
-bundle g = defbundle("1", "one", "2", "two", "three", 3)
-scalar h = $true  # or 1
-scalar i = NA
+a = "hello, world"
+b = 3
+c = 3.14
+d = {1, 2, 3}
+e = _("one"=1, "two"="2", "three"={3})
+f = TRUE  # or 1
+g = NA
 ```
 
 <details>
 <summary>Solution</summary>
 <pre><code class="language-hansl"># data_types.inp
-scalar a = "hello, world"
+string a = "hello, world"
 scalar b = 3
 scalar c = 3.14
 matrix d = {1, 2, 3}
-bundle e = defbundle("1", "one", "2", "two", "three", 3)
-scalar f = $true
+bundle e = _("one"=1, "two"="2", "three"={3})
+scalar f = TRUE  # or 1
 scalar g = NA
 </code></pre>
 <pre><code class="language-hansl">printf "a: %s\n", typename(a)
@@ -193,8 +191,6 @@ printf "d: %s\n", typename(d)
 printf "e: %s\n", typename(e)
 printf "f: %s\n", typename(f)
 printf "g: %s\n", typename(g)
-printf "h: %s\n", typename(h)
-printf "i: %s\n", typename(i)
 </code></pre>
 
 The data types in hansl/gretl are:
