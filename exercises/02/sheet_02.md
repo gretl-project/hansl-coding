@@ -171,6 +171,7 @@ d = {1, 2, 3}
 e = _("one"=1, "two"="2", "three"={3})
 f = TRUE  # or 1
 g = NA
+h = defarray("a", "b", "c")
 ```
 
 <details>
@@ -180,9 +181,10 @@ string a = "hello, world"
 scalar b = 3
 scalar c = 3.14
 matrix d = {1, 2, 3}
-bundle e = _("one"=1, "two"="2", "three"={3})
+bundle e = _(one=1, two="2", three={3})
 scalar f = TRUE  # or 1
 scalar g = NA
+strings h = defarray("a", "b", "c")
 </code></pre>
 <pre><code class="language-hansl">printf "a: %s\n", typename(a)
 printf "b: %s\n", typename(b)
@@ -191,6 +193,7 @@ printf "d: %s\n", typename(d)
 printf "e: %s\n", typename(e)
 printf "f: %s\n", typename(f)
 printf "g: %s\n", typename(g)
+printf "h: %s\n", typename(h)
 </code></pre>
 
 The data types in hansl/gretl are:
@@ -201,6 +204,7 @@ The data types in hansl/gretl are:
 - e: bundle (key-value collection)
 - f: scalar (boolean)
 - g: scalar (missing value)
+- h: strings (array of strings)
 </details>
 
 
