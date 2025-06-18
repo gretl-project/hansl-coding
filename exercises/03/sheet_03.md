@@ -63,7 +63,7 @@ Create a script that:
 matrix monthly_costs = {12.5, 14.2, 11.8, 13.5, 15.0, 16.2}
 strings month_names = defarray("January", "February", "March",
                               "April", "May", "June")
-
+# Loop through the costs vector
 loop i=1..nelem(monthly_costs)
     printf "Month %d (%s): Costs are %.1f thousand euros\n", \
         i, month_names[i], monthly_costs[i]
