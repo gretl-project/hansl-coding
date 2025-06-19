@@ -121,7 +121,7 @@ printf "Hello, %s and %s! They are %d and %d years old.\n", name1, name2, age1, 
 
 ## Exercise 7: Formatted Printing III
 Modify the `print_names.inp` script to hold:
-1) the names in a string array (check the [`deflist()`function](https://gretl.sourceforge.net/gretl-help/funcref.html#defarray)), and
+1) the names in a string array -- check the [`deflist()`](https://gretl.sourceforge.net/gretl-help/funcref.html#defarray) function, and
 2) the ages in a row vector (e.g. `r = {1, 2, 3}`).
 
 Print the names and ages for each person in reverse order line by line. Use the `printf` function to format the output.
